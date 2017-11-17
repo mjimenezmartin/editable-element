@@ -1,0 +1,14 @@
+<div mat-line *ngIf="property && updatingProperty == false; else emptyProperty" (click)="editProperty()">
+  {{property}}
+  <button mat-icon-button>
+    <mat-icon style="color:#ccc">mode_edit</mat-icon>
+  </button>
+</div>
+<ng-template #emptyProperty>
+  <button mat-button color="accent" (click)="editProperty()" *ngIf="!updatingProperty; else propertyInput">{{emptyText}}</button>
+</ng-template>
+<ng-template #propertyInput>
+  <mat-form-field class="maxw">
+    <input autofocusedInput matInput #phoneNumber value="{{property}}" (blur)="propertyUpdated(phoneNumber.value)">
+  </mat-form-field>
+</ng-template>
